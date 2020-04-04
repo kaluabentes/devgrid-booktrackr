@@ -7,8 +7,8 @@ const PROP_TYPES = {
   children: PropTypes.node.isRequired,
 };
 
-export default function BookGrid({ children }) {
-  return <div className={styles.container}>{children}</div>;
+export default function SpinnerContainer({ children }) {
+  return <div className={styles.spinnerContainer}>{children}</div>;
 }
 
-BookGrid.propTypes = PROP_TYPES;
+SpinnerContainer.propTypes = PROP_TYPES;

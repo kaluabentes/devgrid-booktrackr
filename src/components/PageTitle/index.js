@@ -7,8 +7,8 @@ const PROP_TYPES = {
   children: PropTypes.node.isRequired,
 };
 
-export default function BookGrid({ children }) {
-  return <div className={styles.container}>{children}</div>;
+export default function PageTitle({ children }) {
+  return <h2 className={styles.title}>{children}</h2>;
 }
 
-BookGrid.propTypes = PROP_TYPES;
+PageTitle.propTypes = PROP_TYPES;

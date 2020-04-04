@@ -5,7 +5,7 @@ import Library from "pages/Library";
 
 export default [
   {
-    label: "Search Book",
+    label: "Book Finder",
     path: "/",
     component: <Search />,
   },

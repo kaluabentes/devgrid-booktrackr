@@ -12,7 +12,7 @@ import Header from "components/Header";
 import styles from "./styles.module.css";
 
 const PROP_TYPES = {
-  children: PropTypes.node.isRequried,
+  children: PropTypes.node.isRequired,
   title: PropTypes.string,
 };
 

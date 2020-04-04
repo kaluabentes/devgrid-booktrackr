@@ -33,7 +33,10 @@ export default function Header({ title, navItems, onNavItemClick }) {
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav>
             {navItems.map((item) => (
-              <Nav.Link onSelect={() => onNavItemClick(item.path)}>
+              <Nav.Link
+                key={item.path}
+                onSelect={() => onNavItemClick(item.path)}
+              >
                 {item.label}
               </Nav.Link>
             ))}
