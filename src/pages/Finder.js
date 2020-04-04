@@ -6,7 +6,7 @@ import Layout from "templates/Layout";
 import PageTitle from "components/PageTitle";
 import SpinnerContainer from "components/SpinnerContainer";
 import BookGrid from "components/BookGrid";
-import BookItem from "components/BookItem";
+import BookResultItem from "components/BookResultItem";
 
 import ApiService from "services/ApiService";
 import StorageService from "services/StorageService";
@@ -114,7 +114,7 @@ export default function Finder() {
           <p>{results.numFound} found</p>
           <BookGrid>
             {getComputedResults(results.docs).map((book) => (
-              <BookItem
+              <BookResultItem
                 isAdded={book.isAdded}
                 key={book.key}
                 id={book.key}

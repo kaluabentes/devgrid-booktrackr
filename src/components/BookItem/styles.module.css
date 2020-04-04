@@ -1,6 +1,5 @@
 .container {
   text-align: center;
-  position: relative;
 }
 
 .container:hover .addButton {
@@ -22,36 +21,4 @@
 
 .author {
   margin-bottom: 0;
-}
-
-.addButton {
-  background: var(--color-primary);
-  color: var(--color-white);
-  border: none;
-  outline: none;
-  border-radius: 50%;
-  height: 30px;
-  width: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  opacity: 0;
-  transition: 0.3s;
-}
-
-@media (max-width: 769px) {
-  .addButton {
-    opacity: 1;
-  }
-}
-
-.addButton:focus {
-  outline: none;
-}
-
-.addButtonAdded {
-  background: var(--color-success);
 }
