@@ -9,31 +9,14 @@ import BookItem from "components/BookItem";
 import styles from "./styles.module.css";
 
 const PROP_TYPES = {
-  id: PropTypes.string,
-  cover: PropTypes.string,
-  title: PropTypes.string,
-  author: PropTypes.string,
-  isAdded: PropTypes.bool,
-  onAddClick: PropTypes.func,
+  onEditClick: PropTypes.func,
 };
 
 const DEFAULT_PROPS = {
-  id: "",
-  cover: "",
-  title: "",
-  author: "",
-  isAdded: false,
-  onAddClick: () => {},
+  onEditClick: () => {},
 };
 
-export default function BookResultItem({
-  id,
-  cover,
-  title,
-  author,
-  isAdded,
-  onAddClick,
-}) {
+export default function BookLibraryItem({ onAddClick, ...bookItemProps }) {
   return (
     <div className={styles.container}>
       <OverlayTrigger
@@ -51,10 +34,10 @@ export default function BookResultItem({
           {isAdded ? <FaCheck /> : <FaPlus />}
         </button>
       </OverlayTrigger>
-      <BookItem cover={cover} title={title} author={author} />
+      <BookItem {...bookItemProps} />
     </div>
   );
 }
 
-BookResultItem.propTypes = PROP_TYPES;
-BookResultItem.defaultProps = DEFAULT_PROPS;
+BookLibraryItem.propTypes = PROP_TYPES;
+BookLibraryItem.defaultProps = DEFAULT_PROPS;
