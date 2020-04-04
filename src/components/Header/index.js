@@ -35,7 +35,7 @@ export default function Header({ title, navItems, onNavItemClick }) {
             {navItems.map((item) => (
               <Nav.Link
                 key={item.path}
-                onSelect={() => onNavItemClick(item.path)}
+                onClick={() => onNavItemClick(item.path)}
               >
                 {item.label}
               </Nav.Link>
