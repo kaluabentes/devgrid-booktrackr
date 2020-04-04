@@ -11,13 +11,13 @@ import BookItem from "components/BookItem";
 import ApiService from "services/ApiService";
 import StorageService from "services/StorageService";
 
+import getCover from "utils/book/getCover";
+import getAuthor from "utils/book/getAuthor";
+
 const SERVER_ERROR =
   "Sorry. There seems to be a problem with what you were just looking at.";
 
-const PLACEHOLDER_PATH =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSqPB7HMDJjWT2u24S_3RLfMriDu2zGGBtr1idPSc_BwhXiCMyI&usqp=CAU";
-
-export default function Search() {
+export default function Finder() {
   const [search, setSearch] = useState("");
   const [results, setResults] = useState(undefined);
   const [isLoading, setLoading] = useState(false);
@@ -26,6 +26,7 @@ export default function Search() {
   const booksIds = StorageService.getItems("books").map((book) => book.id);
   const [storedIds, setStoredIds] = useState(booksIds);
 
+  // Return books with added status
   const getComputedResults = (items) => {
     return items.map((item) => ({
       ...item,
@@ -33,28 +34,16 @@ export default function Search() {
     }));
   };
 
-  const getCover = (id) => {
-    if (!id || id === -1) {
-      return PLACEHOLDER_PATH;
-    }
-
-    return `http://covers.openlibrary.org/b/id/${id}-M.jpg`;
-  };
-
-  const getAuthor = (author) =>
-    Array.isArray(author) ? author.join(", ") : "";
-
   const searchBooks = async (pageNumber) => {
     setLoading(true);
 
     try {
       const response = await ApiService.search(search, pageNumber);
-
       window.scrollTo(0, 0);
       setResults(response);
       setLoading(false);
     } catch (error) {
-      console.log("ERROR", error);
+      console.log(error);
       setError(SERVER_ERROR);
       setLoading(false);
     }
@@ -83,13 +72,14 @@ export default function Search() {
     searchBooks(number);
   };
 
+  // Keep track of added books ids.
   const handleAddBookClick = (book) => {
     setStoredIds([...storedIds, book.key]);
     StorageService.addItem("books", {
       id: book.key,
       title: book.title,
       author: getAuthor(book.author),
-      cover: getCover(book.cover_i),
+      coverId: book.cover_i,
       startedAt: undefined,
       endedAt: undefined,
     });
@@ -130,7 +120,7 @@ export default function Search() {
                 id={book.key}
                 cover={getCover(book.cover_i)}
                 title={book.title}
-                author={getAuthor(book.author)}
+                author={getAuthor(book.author_name)}
                 onAddClick={() => handleAddBookClick(book)}
               />
             ))}
@@ -144,7 +134,7 @@ export default function Search() {
   };
 
   return (
-    <Layout title="Search">
+    <Layout title="Book Finder">
       <PageTitle>Book Finder</PageTitle>
       <Form>
         <Form.Group controlId="formBasicEmail">

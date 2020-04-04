@@ -1,13 +1,13 @@
 import React from "react";
 
-import Search from "pages/Search";
+import Finder from "pages/Finder";
 import Library from "pages/Library";
 
 export default [
   {
     label: "Book Finder",
     path: "/",
-    component: <Search />,
+    component: <Finder />,
   },
   {
     label: "My Library",
