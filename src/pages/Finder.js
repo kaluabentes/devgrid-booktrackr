@@ -78,7 +78,7 @@ export default function Finder() {
     StorageService.addItem("books", {
       id: book.key,
       title: book.title,
-      author: getAuthor(book.author),
+      author: getAuthor(book.author_name),
       coverId: book.cover_i,
       startedAt: undefined,
       endedAt: undefined,
@@ -121,7 +121,9 @@ export default function Finder() {
                 cover={getCover(book.cover_i)}
                 title={book.title}
                 author={getAuthor(book.author_name)}
-                onAddClick={() => handleAddBookClick(book)}
+                onAddClick={
+                  book.isAdded ? null : () => handleAddBookClick(book)
+                }
               />
             ))}
           </BookGrid>
