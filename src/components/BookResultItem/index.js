@@ -1,10 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
 import { FaPlus, FaCheck } from "react-icons/fa";
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
 import BookItem from "components/BookItem";
+import BookActionButton from "components/BookActionButton";
 
 import styles from "./styles.module.css";
 
@@ -36,21 +35,13 @@ export default function BookResultItem({
 }) {
   return (
     <div className={styles.container}>
-      <OverlayTrigger
-        key={id}
-        placement={"bottom"}
-        overlay={<Tooltip id={`tooltip-${id}`}>Click to add</Tooltip>}
-      >
-        <button
-          type="button"
-          onClick={onAddClick}
-          className={classnames(styles.addButton, {
-            [styles.addButtonAdded]: isAdded,
-          })}
-        >
-          {isAdded ? <FaCheck /> : <FaPlus />}
-        </button>
-      </OverlayTrigger>
+      <BookActionButton
+        id={id}
+        tooltipText="Click to add"
+        onClick={onAddClick}
+        type={isAdded ? "success" : "primary"}
+        icon={isAdded ? <FaCheck /> : <FaPlus />}
+      />
       <BookItem cover={cover} title={title} author={author} />
     </div>
   );

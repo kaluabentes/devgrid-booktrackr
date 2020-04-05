@@ -2,10 +2,6 @@
   text-align: center;
 }
 
-.container:hover .addButton {
-  opacity: 1;
-}
-
 .cover {
   width: 100%;
   height: 270px;

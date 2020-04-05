@@ -1,43 +1,48 @@
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
-import { FaPlus, FaCheck } from "react-icons/fa";
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import { FaEdit } from "react-icons/fa";
 
 import BookItem from "components/BookItem";
+import BookActionButton from "components/BookActionButton";
 
 import styles from "./styles.module.css";
 
 const PROP_TYPES = {
+  id: PropTypes.string,
+  cover: PropTypes.string,
+  title: PropTypes.string,
+  author: PropTypes.string,
   onEditClick: PropTypes.func,
 };
 
 const DEFAULT_PROPS = {
+  id: "",
+  cover: "",
+  title: "",
+  author: "",
   onEditClick: () => {},
 };
 
-export default function BookLibraryItem({ onAddClick, ...bookItemProps }) {
+export default function BookResultItem({
+  id,
+  cover,
+  title,
+  author,
+  onEditClick,
+}) {
   return (
     <div className={styles.container}>
-      <OverlayTrigger
-        key={id}
-        placement={"bottom"}
-        overlay={<Tooltip id={`tooltip-${id}`}>Click to add</Tooltip>}
-      >
-        <button
-          type="button"
-          onClick={onAddClick}
-          className={classnames(styles.addButton, {
-            [styles.addButtonAdded]: isAdded,
-          })}
-        >
-          {isAdded ? <FaCheck /> : <FaPlus />}
-        </button>
-      </OverlayTrigger>
-      <BookItem {...bookItemProps} />
+      <BookActionButton
+        id={id}
+        tooltipText="Edit tracking info"
+        onClick={onEditClick}
+        type="primary"
+        icon={<FaEdit />}
+      />
+      <BookItem cover={cover} title={title} author={author} />
     </div>
   );
 }
 
-BookLibraryItem.propTypes = PROP_TYPES;
-BookLibraryItem.defaultProps = DEFAULT_PROPS;
+BookResultItem.propTypes = PROP_TYPES;
+BookResultItem.defaultProps = DEFAULT_PROPS;
