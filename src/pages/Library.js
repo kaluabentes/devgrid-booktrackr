@@ -40,7 +40,7 @@ export default function Library() {
 
   return (
     <Layout title="Library">
-      <PageTitle>My Library</PageTitle>
+      <PageTitle>Library</PageTitle>
       {books.length > 0 ? (
         <BookGrid>
           {books.map((book) => (

@@ -137,7 +137,7 @@ export default function Finder() {
 
   return (
     <Layout title="Book Finder">
-      <PageTitle>Book Finder</PageTitle>
+      <PageTitle>Finder</PageTitle>
       <Form>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Whats is the book you are looking for?</Form.Label>

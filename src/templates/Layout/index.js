@@ -37,9 +37,9 @@ export default function Layout({ title, children }) {
         navItems={routes}
         onNavItemClick={handleNavItemClick}
       />
-      <main className={styles.main}>
-        <Container>{children}</Container>
-      </main>
+      <Container>
+        <main className={styles.main}>{children}</main>
+      </Container>
     </>
   );
 }
