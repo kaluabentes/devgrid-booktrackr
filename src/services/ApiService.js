@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const client = axios.create({ baseURL: "http://openlibrary.org" });
+const client = axios.create({ baseURL: "https://openlibrary.org" });
 
 export default class ApiService {
   static search(term, page) {
