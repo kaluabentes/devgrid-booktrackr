@@ -1,0 +1,9 @@
+.formGrid {
+  display: flex;
+  align-items: flex-end;
+}
+
+.controlCol {
+  width: 100px;
+  margin-right: 10px;
+}

@@ -43,7 +43,6 @@ export default function Finder() {
       setResults(response);
       setLoading(false);
     } catch (error) {
-      console.log(error);
       setError(SERVER_ERROR);
       setLoading(false);
     }

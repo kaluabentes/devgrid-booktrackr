@@ -1,17 +1,17 @@
+const storeItems = (key, items) => {
+  localStorage.setItem(key, JSON.stringify(items));
+};
+
 class StorageService {
   getItems(key) {
     return JSON.parse(localStorage.getItem(key)) || [];
-  }
-
-  storeItems(key, items) {
-    localStorage.setItem(key, JSON.stringify(items));
   }
 
   addItem(key, value) {
     const oldItems = this.getItems(key);
     const newItems = [...oldItems, value];
 
-    this.storeItems(key, newItems);
+    storeItems(key, newItems);
   }
 
   editItem(key, id, value) {
@@ -28,7 +28,7 @@ class StorageService {
       return item;
     });
 
-    this.storeItems(key, newItems);
+    storeItems(key, newItems);
   }
 }
 
