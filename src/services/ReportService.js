@@ -35,6 +35,7 @@ const prepareDates = (items) => {
 
 const calculateMonthlyAverage = (chuncks) => {
   const totalBooksRead = chuncks.reduce((prev, curr) => prev + curr.length, 0);
+
   return Math.ceil(totalBooksRead / chuncks.length);
 };
 

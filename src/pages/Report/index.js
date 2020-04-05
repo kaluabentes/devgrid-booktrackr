@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 
 import Layout from "templates/Layout";
 import PageTitle from "components/PageTitle";
@@ -43,25 +43,37 @@ export default function Report() {
   return (
     <Layout title="Report">
       <PageTitle>Report</PageTitle>
-      <div className={styles.formGrid}>
-        <div className={styles.controlCol}>
-          <Form.Label>Year</Form.Label>
-          <Form.Control
-            value={year}
-            onChange={handlerYearChange}
-            onKeyPress={handleKeyPress}
-          />
-        </div>
-        <div>
-          <Button onClick={applySelectedYear}>Apply</Button>
-        </div>
-      </div>
-      <br />
-      <p>
-        <strong>Monthly Average:</strong> {monthlyAverage}
-      </p>
-      <br />
-      <ReportChart data={data} />
+      {books.length > 0 ? (
+        <>
+          <div className={styles.formGrid}>
+            <div className={styles.controlCol}>
+              <Form.Label>Year</Form.Label>
+              <Form.Control
+                value={year}
+                onChange={handlerYearChange}
+                onKeyPress={handleKeyPress}
+              />
+            </div>
+            <div>
+              <Button onClick={applySelectedYear}>Apply</Button>
+            </div>
+          </div>
+          <br />
+          {!isNaN(monthlyAverage) ? (
+            <>
+              <p>
+                <strong>Monthly Average:</strong> {monthlyAverage}
+              </p>
+              <br />
+              <ReportChart data={data} />
+            </>
+          ) : (
+            <Alert variant="info">Theres no book data to use for report</Alert>
+          )}
+        </>
+      ) : (
+        <Alert variant="info">Theres no book data to use for report</Alert>
+      )}
     </Layout>
   );
 }
