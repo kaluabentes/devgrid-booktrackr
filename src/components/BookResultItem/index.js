@@ -33,8 +33,12 @@ export default function BookResultItem({
   isAdded,
   onAddClick,
 }) {
+  const className = `${styles.container} book-result-item ${
+    isAdded ? "book-result-item--added" : null
+  }`;
+
   return (
-    <div className={styles.container}>
+    <div className={className}>
       <BookActionButton
         id={id}
         tooltipText="Click to add"
