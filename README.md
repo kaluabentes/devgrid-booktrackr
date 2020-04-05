@@ -1,8 +1,18 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React Book Tracker
+
+An simple app for managing books and keep track of reading.
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `yarn cypress:open`
+
+To open cypress GUI.
+
+### `yarn cypress:run`
+
+To run cypress tests in background mode.
 
 ### `yarn start`
 
