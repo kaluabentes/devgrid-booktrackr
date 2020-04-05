@@ -142,6 +142,7 @@ export default function Finder() {
           <Form.Label>Whats is the book you are looking for?</Form.Label>
           <InputGroup>
             <Form.Control
+              id="finder-search-input"
               size="lg"
               type="text"
               placeholder="Ex.: The Lord of the Rings"
@@ -151,6 +152,7 @@ export default function Finder() {
             />
             <InputGroup.Append>
               <Button
+                id="finder-search-button"
                 type="button"
                 variant="success"
                 onClick={() => searchBooks()}
