@@ -24,8 +24,8 @@ const createDateObject = (dateString) => {
 const prepareDates = (items) => {
   const typedItems = items.map((item) => ({
     ...item,
-    startedAt: createDateObject(item.startedAt),
-    endedAt: createDateObject(item.endedAt),
+    startedAt: item.startedAt && createDateObject(item.startedAt),
+    endedAt: item.endedAt && createDateObject(item.endedAt),
   }));
 
   typedItems.sort((a, b) => a.endedAt - b.endedAt);
@@ -41,7 +41,7 @@ const calculateMonthlyAverage = (chuncks) => {
 
 const getPeriodChunks = (books, year) => {
   const booksArray = prepareDates(books).filter(
-    (item) => item.endedAt.getFullYear() === year
+    (item) => item.endedAt && item.endedAt.getFullYear() === year
   );
 
   return booksArray.reduce((prev, curr) => {
