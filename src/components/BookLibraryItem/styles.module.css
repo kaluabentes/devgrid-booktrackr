@@ -5,3 +5,17 @@
 .container:hover button {
   opacity: 1;
 }
+
+.badge {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background: var(--color-success);
+  color: var(--color-white);
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}

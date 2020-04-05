@@ -51,6 +51,7 @@ export default function Library() {
               title={book.title}
               author={book.author}
               onEditClick={() => handleEditClick(book)}
+              isReaded={!!book.endedAt}
             />
           ))}
         </BookGrid>
