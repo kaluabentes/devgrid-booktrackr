@@ -2,6 +2,8 @@
 
 An simple app for managing books and keep track of reading.
 
+Live [here](https://reactbooktracker.netlify.com/)
+
 ## Available Scripts
 
 In the project directory, you can run:
